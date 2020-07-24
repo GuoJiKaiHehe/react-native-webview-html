@@ -1,4 +1,5 @@
 # react-native-webview-html
+```
 static propTypes = {
   onClickImg:PropTypes.func,
   renderLoading:PropTypes.func,
@@ -9,6 +10,7 @@ static defaultProps = {
   content:"",
 };
 
+```
 ```
 (<AutoHeightWebView 
 			{...this.props}
