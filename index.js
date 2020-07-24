@@ -17,6 +17,8 @@ import {
     StyleSheet,
 } from 'react-native'
 import AutoHeightWebView from './lib/AutoHeightWebView';
+import PropTypes from 'prop-types';
+
 
 export default class WebViewHtmlView extends Component {
 	constructor(props) {
@@ -26,9 +28,15 @@ export default class WebViewHtmlView extends Component {
 			isLoading:true,
 	    };	
 	}
+	static propTypes = {
+	  onClickImg:PropTypes.func,
+	  renderLoading:PropTypes.func,
+	  content:PropTypes.string,
+	};
 	static defaultProps = {
 	  onClickImg(){},
-	}
+	  content:"",
+	};
 	componentDidMount(){
 		
 	}
@@ -37,21 +45,22 @@ export default class WebViewHtmlView extends Component {
 		var content = this.props.content;
 		// console.log("content",content);
 		return (<AutoHeightWebView 
+			{...this.props}
 			// onLoadStart={syntheticEvent => {
-	  //           // update component to be aware of loading status
-	  //               const { nativeEvent } = syntheticEvent;
-	  //               this.setState({
-	  //               	isLoading:nativeEvent.loading,
-	  //               })
-	  //           }}
-	  //           onLoadEnd={syntheticEvent => {
-		 //            // update component to be aware of loading status
-		 //            const { nativeEvent } = syntheticEvent;
-		 //            // this.isLoading = nativeEvent.loading;
-		 //             this.setState({
-	  //               	isLoading:nativeEvent.loading,
-	  //               });
-	  //         }}
+//           // update component to be aware of loading status
+//               const { nativeEvent } = syntheticEvent;
+//               this.setState({
+//               	isLoading:nativeEvent.loading,
+//               })
+//           }}
+//           onLoadEnd={syntheticEvent => {
+//            // update component to be aware of loading status
+//            const { nativeEvent } = syntheticEvent;
+//            // this.isLoading = nativeEvent.loading;
+//             this.setState({
+//               	isLoading:nativeEvent.loading,
+//               });
+//         }}
 
 			source={{html:content}}
 			style={[{marginTop: 0 ,height:this.state.htmlHegiht||30,width:'100%'}]}
@@ -67,6 +76,9 @@ export default class WebViewHtmlView extends Component {
 		    }}
 		    startInLoadingState={true}
 		    renderLoading={()=>{
+		    	if(this.props.renderLoading){
+		    		return this.props.renderLoading();
+		    	}
 		    	return <ActivityIndicator size= 'large'  />
 		    }}
 		    onClickImg={(data)=>{
