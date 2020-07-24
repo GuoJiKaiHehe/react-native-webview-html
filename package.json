@@ -1,0 +1,22 @@
+{
+  "name": "react-native-webview-html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stulip/react-native-pell-rich-editor.git"
+  },
+  "dependencies": {
+    "prop-types":"15.7.2",
+    "react-native-webview": "^8.2.1"
+  },
+  "devDependencies": {
+  },
+  "keywords": [],
+  "author": "guojikai",
+  "license": "ISC"
+}
