@@ -1,4 +1,7 @@
 # react-native-webview-html
+## 自动高度的webview  
+## 优点还原后台富文本样式百分之98
+## 缺点加载速度会便慢
 ```
 static propTypes = {
   onClickImg:PropTypes.func,
